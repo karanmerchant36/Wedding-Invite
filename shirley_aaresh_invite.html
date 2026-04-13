@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Shirley & Aaresh · Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brown:#6b4226;
+  --brown-light:#8b5e3c;
+  --gold:#c9a55a;
+  --cream:#f5f0e8;
+  --cream2:#ede8dc;
+  --cream3:#e8e0d0;
+  --white:#faf8f4;
+  --text-dark:#3d2b1f;
+  --text-med:#6b4226;
+  --text-light:#a08060;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);font-family:'Raleway',sans-serif;font-weight:300;color:var(--text-dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;max-width:480px;margin:0 auto;position:relative}
+
+/* ── LANGUAGE TOGGLE ── */
+.lang-toggle{position:fixed;top:18px;right:18px;z-index:1000;background:rgba(255,252,247,0.95);border-radius:50px;padding:6px 8px;display:flex;gap:4px;box-shadow:0 2px 12px rgba(0,0,0,0.12)}
+.lang-btn{padding:7px 18px;border-radius:50px;font-size:11px;letter-spacing:2px;font-weight:400;cursor:pointer;border:none;transition:all 0.3s;color:var(--text-med);background:transparent;font-family:'Raleway',sans-serif}
+.lang-btn.active{background:var(--brown);color:#fff}
+
+/* ── MUTE BUTTON ── */
+.mute-btn{position:fixed;bottom:24px;right:18px;z-index:1000;width:44px;height:44px;border-radius:50%;background:rgba(255,252,247,0.95);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.mute-btn svg{width:18px;height:18px;stroke:var(--brown);fill:none;stroke-width:2}
+
+/* ══════════════════════════════════════
+   HERO SECTION
+══════════════════════════════════════ */
+.hero{position:relative;width:100%;height:100vh;min-height:700px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:60px 32px 48px}
+
+/* Illustrated Mediterranean background */
+.hero-illustration{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+
+/* Fallback painted scene using CSS + SVG */
+.hero-scene{position:absolute;inset:0;z-index:0}
+
+.hero-overlay-text{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;width:100%;padding-top:8px}
+
+.hero-top-label{font-size:10px;letter-spacing:10px;color:rgba(255,235,180,0.9);margin-bottom:20px;text-transform:uppercase;font-weight:300;text-shadow:0 0 20px rgba(255,180,60,0.6),0 1px 4px rgba(0,0,0,0.5);font-family:'Raleway',sans-serif}
+
+.hero-name{
+  font-family:'Pinyon Script',cursive;
+  font-size:clamp(80px,21vw,106px);
+  color:#fff;
+  line-height:1.05;
+  display:block;
+  text-shadow:
+    0 0 30px rgba(255,210,100,0.9),
+    0 0 60px rgba(255,160,40,0.6),
+    0 0 100px rgba(255,120,20,0.3),
+    0 2px 4px rgba(0,0,0,0.6);
+  animation: nameGlow 3s ease-in-out infinite;
+}
+.hero-amp{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,6vw,32px);
+  font-style:italic;
+  font-weight:300;
+  color:rgba(255,225,140,0.95);
+  display:block;
+  margin:0 0 4px;
+  letter-spacing:8px;
+  text-shadow:0 0 20px rgba(255,180,60,0.8),0 1px 4px rgba(0,0,0,0.5);
+}
+@keyframes nameGlow{
+  0%,100%{text-shadow:0 0 30px rgba(255,210,100,0.9),0 0 60px rgba(255,160,40,0.6),0 0 100px rgba(255,120,20,0.3),0 2px 4px rgba(0,0,0,0.6)}
+  50%{text-shadow:0 0 50px rgba(255,230,130,1),0 0 90px rgba(255,180,60,0.8),0 0 140px rgba(255,140,30,0.5),0 2px 4px rgba(0,0,0,0.6)}
+}
+
+.hero-bottom{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;width:100%}
+
+.hero-date-row{display:flex;align-items:center;gap:14px}
+.hero-dash{width:36px;height:0.5px;background:rgba(255,255,255,0.6)}
+.hero-diamond{width:6px;height:6px;background:#fff;transform:rotate(45deg);opacity:0.8}
+.hero-date-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;font-style:italic;color:rgba(255,235,190,0.95);letter-spacing:4px;text-shadow:0 0 20px rgba(255,180,60,0.5),0 1px 6px rgba(0,0,0,0.6)}
+
+.hero-rsvp-btn{font-size:10px;letter-spacing:6px;color:rgba(255,230,160,0.95);border:0.5px solid rgba(255,200,100,0.6);padding:11px 36px;border-radius:0;cursor:pointer;text-transform:uppercase;text-decoration:none;font-family:'Raleway',sans-serif;transition:all 0.4s;text-shadow:0 0 12px rgba(255,180,60,0.5)}
+.hero-rsvp-btn:hover{background:rgba(255,180,60,0.15);border-color:rgba(255,200,100,0.9)}
+
+.hero-scroll-arrow{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;animation:bounce 2s ease infinite}
+.hero-scroll-arrow span{font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.6)}
+.hero-scroll-arrow svg{width:20px;height:20px;stroke:rgba(255,210,120,0.7);fill:none;stroke-width:1.5}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+/* ══════════════════════════════════════
+   EMBOSSED CREAM SECTIONS
+══════════════════════════════════════ */
+.cream-section{background:var(--cream);position:relative;overflow:hidden}
+
+/* Embossed corner / edge decorations */
+.emboss-tl,.emboss-tr,.emboss-bl,.emboss-br{position:absolute;width:120px;height:120px;pointer-events:none;opacity:0.18}
+.emboss-tl{top:0;left:0}
+.emboss-tr{top:0;right:0;transform:scaleX(-1)}
+.emboss-bl{bottom:0;left:0;transform:scaleY(-1)}
+.emboss-br{bottom:0;right:0;transform:scale(-1,-1)}
+
+/* ══════════════════════════════════════
+   COUNTDOWN
+══════════════════════════════════════ */
+.countdown-section{background:var(--cream);padding:56px 32px 48px;text-align:center;position:relative;overflow:hidden}
+.cd-script{font-family:'Pinyon Script',cursive;font-size:52px;color:var(--brown);margin-bottom:6px;display:block}
+.cd-until{font-size:10px;letter-spacing:6px;color:var(--brown-light);margin-bottom:40px;text-transform:uppercase;opacity:0.7}
+.cd-grid{display:flex;align-items:flex-start;justify-content:center;gap:0}
+.cd-block{flex:1;text-align:center;padding:0 4px}
+.cd-num{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,14vw,68px);font-weight:300;font-style:italic;color:var(--brown);line-height:1;display:block}
+.cd-lbl{font-size:9px;letter-spacing:5px;color:var(--text-light);margin-top:8px;text-transform:uppercase;font-weight:400}
+.cd-pipe{width:0.5px;height:60px;background:var(--brown-light);opacity:0.3;margin-top:12px;align-self:flex-start}
+
+/* ══════════════════════════════════════
+   WELCOME
+══════════════════════════════════════ */
+.welcome-section{background:var(--white);padding:56px 36px;text-align:center;position:relative;overflow:hidden}
+.welcome-script{font-family:'Pinyon Script',cursive;font-size:52px;color:var(--brown);margin-bottom:28px;display:block}
+.welcome-body{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.9;color:var(--text-dark);font-style:italic}
+.welcome-body strong{font-style:normal;font-weight:500;color:var(--text-dark)}
+.welcome-body em{font-style:italic;color:var(--brown)}
+
+/* Photo grid */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:36px}
+.photo-cell{border-radius:2px;overflow:hidden;background:var(--cream3);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative}
+.photo-cell img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{font-size:9px;letter-spacing:3px;color:var(--text-light);text-align:center;line-height:1.8;opacity:0.6}
+.photo-cell.bw{filter:grayscale(100%)}
+
+/* ══════════════════════════════════════
+   DAY PROGRAMME
+══════════════════════════════════════ */
+.programme-section{background:var(--cream);padding:56px 24px 48px;position:relative;overflow:hidden}
+.prog-script{font-family:'Pinyon Script',cursive;font-size:48px;color:var(--brown);display:block;text-align:center;margin-bottom:6px}
+.prog-date{font-size:11px;letter-spacing:5px;color:var(--brown-light);text-align:center;margin-bottom:44px;text-transform:uppercase;opacity:0.75}
+
+/* Timeline */
+.timeline{position:relative;padding:0 16px}
+.timeline-line{position:absolute;left:50%;top:0;bottom:0;width:0.5px;background:var(--brown-light);opacity:0.35;transform:translateX(-50%)}
+.timeline-item{display:flex;align-items:flex-start;margin-bottom:36px;position:relative}
+.timeline-item.left{flex-direction:row-reverse;text-align:right}
+.timeline-item.right{flex-direction:row;text-align:left}
+.timeline-content{flex:1;padding:0 28px}
+.timeline-time{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;font-style:italic;color:var(--brown);display:block;margin-bottom:2px}
+.timeline-event{font-size:9px;letter-spacing:4px;color:var(--text-light);text-transform:uppercase;font-weight:400}
+.timeline-dot{position:absolute;left:50%;transform:translateX(-50%);width:8px;height:8px;background:var(--cream);border:0.5px solid var(--brown-light);border-radius:50%;top:8px;z-index:1}
+.timeline-tick{position:absolute;left:50%;transform:translateX(-50%);width:16px;height:0.5px;background:var(--brown-light);opacity:0.5;top:11px}
+
+/* Champagne tower illustration */
+.champagne-section{background:var(--white);padding:48px 32px 56px;text-align:center;position:relative;overflow:hidden}
+
+/* ══════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.35s}
+</style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+</div>
+
+<!-- Mute Button -->
+<button class="mute-btn" id="muteBtn" title="Toggle sound">
+  <svg id="muteIcon" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke-linecap="round"/></svg>
+</button>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <!-- Mediterranean Watercolour Illustrated Scene -->
+  <!-- VIDEO BACKGROUND -->
+  <video
+    class="hero-video"
+    autoplay muted loop playsinline
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"
+  >
+    <source src="wedding_bg.mp4" type="video/mp4">
+  </video>
+  <!-- Dark gradient overlay so text is always readable over video -->
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,4,18,0.35) 0%,rgba(2,4,18,0.15) 40%,rgba(2,4,18,0.2) 70%,rgba(2,4,18,0.55) 100%)"></div>
+
+  <!-- Text overlay -->
+  <div class="hero-overlay-text" style="padding-top:16px">
+    <div class="hero-top-label" data-en="We're Getting Married" data-es="Nos Casamos">WE'RE GETTING MARRIED</div>
+    <span class="hero-name">Shirley</span>
+    <span class="hero-amp">&amp;</span>
+    <span class="hero-name">Aaresh</span>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-date-row">
+      <span class="hero-dash"></span>
+      <span class="hero-diamond"></span>
+      <span class="hero-date-text" data-en="12 September 2026" data-es="12 Septiembre 2026">12 September 2026</span>
+      <span class="hero-diamond"></span>
+      <span class="hero-dash"></span>
+    </div>
+    <a href="#rsvp" class="hero-rsvp-btn" data-en="RSVP" data-es="CONFIRMAR">RSVP</a>
+    <div class="hero-scroll-arrow" onclick="document.getElementById('countdown').scrollIntoView({behavior:'smooth'})">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     COUNTDOWN
+══════════════════════════════════════ -->
+<section class="countdown-section cream-section reveal" id="countdown">
+  <!-- emboss corner SVGs -->
+  <svg class="emboss-tl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80 Q76,100 60,110" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <path d="M20,10 Q50,15 65,35 Q80,55 75,85" fill="none" stroke="#6b4226" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+    <path d="M30,5 Q28,20 35,32 Q42,44 38,58" fill="none" stroke="#6b4226" stroke-width="0.6" opacity="0.3"/>
+  </svg>
+  <svg class="emboss-tr" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80 Q76,100 60,110" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <path d="M20,10 Q50,15 65,35 Q80,55 75,85" fill="none" stroke="#6b4226" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+
+  <span class="cd-script">Countdown</span>
+  <div class="cd-until" data-en="Until 12 September 2026" data-es="Hasta 12 Septiembre 2026">UNTIL 12 SEPTEMBER 2026</div>
+
+  <div class="cd-grid">
+    <div class="cd-block">
+      <span class="cd-num" id="cd-d">151</span>
+      <div class="cd-lbl" data-en="Days" data-es="Días">DAYS</div>
+    </div>
+    <div class="cd-pipe"></div>
+    <div class="cd-block">
+      <span class="cd-num" id="cd-h">16</span>
+      <div class="cd-lbl" data-en="Hours" data-es="Horas">HOURS</div>
+    </div>
+    <div class="cd-pipe"></div>
+    <div class="cd-block">
+      <span class="cd-num" id="cd-m">24</span>
+      <div class="cd-lbl" data-en="Minutes" data-es="Minutos">MINUTES</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WELCOME
+══════════════════════════════════════ -->
+<section class="welcome-section reveal">
+  <svg class="emboss-tl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80 Q76,100 60,110" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+  <svg class="emboss-tr" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80 Q76,100 60,110" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+
+  <span class="welcome-script">Welcome!</span>
+  <p class="welcome-body" data-en="We warmly invite you to <strong>celebrate our wedding day</strong> with us in the beautiful town of <em>Ronda, Andalusia</em>. We look forward to sharing this <em>unforgettable moment</em> with our most <strong>special people</strong>." data-es="Os invitamos calurosamente a <strong>celebrar nuestro día de boda</strong> con nosotros en el precioso pueblo de <em>Ronda, Andalucía</em>. Esperamos compartir este <em>momento inolvidable</em> con nuestras personas más <strong>especiales</strong>.">
+    We warmly invite you to <strong>celebrate our wedding day</strong> with us in the beautiful town of <em>Ronda, Andalusia</em>. We look forward to sharing this <em>unforgettable moment</em> with our most <strong>special people</strong>.
+  </p>
+
+  <div class="photo-grid">
+    <div class="photo-cell bw">
+      <div class="photo-placeholder">YOUR<br>PHOTO</div>
+    </div>
+    <div class="photo-cell">
+      <div class="photo-placeholder">YOUR<br>PHOTO</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     DAY PROGRAMME
+══════════════════════════════════════ -->
+<section class="programme-section cream-section reveal">
+  <svg class="emboss-tl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+  <svg class="emboss-tr" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,10 Q40,8 60,30 Q80,52 78,80" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+  <svg class="emboss-bl" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,110 Q40,112 60,90 Q80,68 78,40" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="108" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+  <svg class="emboss-br" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,110 Q40,112 60,90 Q80,68 78,40" fill="none" stroke="#6b4226" stroke-width="1.5"/>
+    <circle cx="12" cy="108" r="4" fill="none" stroke="#6b4226" stroke-width="1"/>
+  </svg>
+
+  <span class="prog-script">Day Programme</span>
+  <div class="prog-date" data-en="12 September 2026" data-es="12 Septiembre 2026">12 September 2026</div>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item right reveal reveal-d1">
+      <div class="timeline-content" style="padding-left:36px">
+        <span class="timeline-time">14:00</span>
+        <span class="timeline-event" data-en="Arrival" data-es="Llegada">ARRIVAL</span>
+      </div>
+      <div class="timeline-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="timeline-item left reveal reveal-d2">
+      <div style="flex:1"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content" style="padding-right:36px">
+        <span class="timeline-time">14:30</span>
+        <span class="timeline-event" data-en="Ceremony" data-es="Ceremonia">CEREMONY</span>
+      </div>
+    </div>
+
+    <div class="timeline-item right reveal reveal-d1">
+      <div class="timeline-content" style="padding-left:36px">
+        <span class="timeline-time">16:00</span>
+        <span class="timeline-event" data-en="Cocktails" data-es="Cócteles">COCKTAILS</span>
+      </div>
+      <div class="timeline-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="timeline-item left reveal reveal-d2">
+      <div style="flex:1"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content" style="padding-right:36px">
+        <span class="timeline-time">18:00</span>
+        <span class="timeline-event" data-en="Dinner" data-es="Cena">DINNER</span>
+      </div>
+    </div>
+
+    <div class="timeline-item right reveal reveal-d1">
+      <div class="timeline-content" style="padding-left:36px">
+        <span class="timeline-time">20:00</span>
+        <span class="timeline-event" data-en="Cutting the Cake" data-es="Corte del Pastel">CUTTING THE CAKE</span>
+      </div>
+      <div class="timeline-dot"></div>
+      <div style="flex:1"></div>
+    </div>
+
+    <div class="timeline-item left reveal reveal-d2">
+      <div style="flex:1"></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-content" style="padding-right:36px">
+        <span class="timeline-time">00:00</span>
+        <span class="timeline-event" data-en="Finish" data-es="Fin">FINISH</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Champagne Tower Section -->
+<section class="champagne-section reveal">
+  <!-- Champagne tower SVG illustration -->
+  <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;opacity:0.75">
+    <defs>
+      <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#c9a55a" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#8b6a3a" stop-opacity="0.9"/>
+      </linearGradient>
+    </defs>
+    <g stroke="#8b6030" stroke-width="1.2" fill="none">
+      <!-- Row 1 top (1 glass) -->
+      <path d="M138,20 Q132,48 124,56 L156,56 Q148,48 142,20Z"/>
+      <ellipse cx="140" cy="56" rx="16" ry="4"/>
+      <line x1="140" y1="60" x2="140" y2="80"/>
+      <line x1="126" y1="80" x2="154" y2="80"/>
+
+      <!-- Row 2 (2 glasses) -->
+      <path d="M102,82 Q96,110 88,118 L120,118 Q112,110 106,82Z"/>
+      <ellipse cx="104" cy="118" rx="16" ry="4"/>
+      <line x1="104" y1="122" x2="104" y2="142"/>
+      <line x1="90" y1="142" x2="118" y2="142"/>
+
+      <path d="M170,82 Q164,110 156,118 L188,118 Q180,110 174,82Z"/>
+      <ellipse cx="172" cy="118" rx="16" ry="4"/>
+      <line x1="172" y1="122" x2="172" y2="142"/>
+      <line x1="158" y1="142" x2="186" y2="142"/>
+
+      <!-- Row 3 (3 glasses) -->
+      <path d="M66,144 Q60,172 52,180 L84,180 Q76,172 70,144Z"/>
+      <ellipse cx="68" cy="180" rx="16" ry="4"/>
+      <line x1="68" y1="184" x2="68" y2="204"/>
+      <line x1="54" y1="204" x2="82" y2="204"/>
+
+      <path d="M134,144 Q128,172 120,180 L152,180 Q144,172 138,144Z"/>
+      <ellipse cx="136" cy="180" rx="16" ry="4"/>
+      <line x1="136" y1="184" x2="136" y2="204"/>
+      <line x1="122" y1="204" x2="150" y2="204"/>
+
+      <path d="M202,144 Q196,172 188,180 L220,180 Q212,172 206,144Z"/>
+      <ellipse cx="204" cy="180" rx="16" ry="4"/>
+      <line x1="204" y1="184" x2="204" y2="204"/>
+      <line x1="190" y1="204" x2="218" y2="204"/>
+
+      <!-- Row 4 (4 glasses) -->
+      <path d="M30,206 Q24,234 16,242 L48,242 Q40,234 34,206Z"/>
+      <ellipse cx="32" cy="242" rx="16" ry="4"/>
+      <line x1="32" y1="246" x2="32" y2="266"/>
+      <line x1="18" y1="266" x2="46" y2="266"/>
+
+      <path d="M98,206 Q92,234 84,242 L116,242 Q108,234 102,206Z"/>
+      <ellipse cx="100" cy="242" rx="16" ry="4"/>
+      <line x1="100" y1="246" x2="100" y2="266"/>
+      <line x1="86" y1="266" x2="114" y2="266"/>
+
+      <path d="M166,206 Q160,234 152,242 L184,242 Q176,234 170,206Z"/>
+      <ellipse cx="168" cy="242" rx="16" ry="4"/>
+      <line x1="168" y1="246" x2="168" y2="266"/>
+      <line x1="154" y1="266" x2="182" y2="266"/>
+
+      <path d="M234,206 Q228,234 220,242 L252,242 Q244,234 238,206Z"/>
+      <ellipse cx="236" cy="242" rx="16" ry="4"/>
+      <line x1="236" y1="246" x2="236" y2="266"/>
+      <line x1="222" y1="266" x2="250" y2="266"/>
+    </g>
+    <!-- Champagne fill highlights -->
+    <g fill="#c9a55a" opacity="0.15">
+      <ellipse cx="140" cy="38" rx="8" ry="3"/>
+      <ellipse cx="104" cy="100" rx="8" ry="3"/>
+      <ellipse cx="172" cy="100" rx="8" ry="3"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ══════════════════════════════════════
+     RSVP
+══════════════════════════════════════ -->
+<section class="welcome-section reveal" id="rsvp" style="padding:64px 36px">
+  <span class="welcome-script">RSVP</span>
+  <p class="welcome-body" style="font-size:15px;margin-bottom:32px" data-en="Kindly confirm your attendance by <strong>1 August 2026</strong>. We can't wait to celebrate with you." data-es="Por favor confirme su asistencia antes del <strong>1 Agosto 2026</strong>. Estamos deseando celebrar con vosotros.">
+    Kindly confirm your attendance by <strong>1 August 2026</strong>. We can't wait to celebrate with you.
+  </p>
+  <a href="https://wa.me/91XXXXXXXXXX" style="display:inline-flex;align-items:center;gap:10px;padding:14px 36px;border:0.5px solid rgba(107,66,38,0.35);color:var(--brown);font-size:10px;letter-spacing:5px;text-decoration:none;text-transform:uppercase;font-family:'Raleway',sans-serif;transition:background 0.3s" onmouseover="this.style.background='rgba(107,66,38,0.06)'" onmouseout="this.style.background='transparent'">
+    <svg style="width:16px;height:16px;fill:#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.557 4.12 1.527 5.849L0 24l6.294-1.508A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.803 9.803 0 01-5.012-1.374l-.36-.214-3.732.894.944-3.64-.235-.375A9.78 9.78 0 012.182 12c0-5.42 4.398-9.818 9.818-9.818 5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
+    <span data-en="Confirm Attendance" data-es="Confirmar Asistencia">Confirm Attendance</span>
+  </a>
+</section>
+
+<!-- Footer -->
+<footer style="background:var(--cream2);padding:32px;text-align:center;border-top:0.5px solid rgba(107,66,38,0.15)">
+  <div style="font-family:'Pinyon Script',cursive;font-size:32px;color:var(--brown);opacity:0.5;margin-bottom:8px">S &amp; A</div>
+  <div style="font-size:9px;letter-spacing:4px;color:var(--text-light);text-transform:uppercase">Shirley · Aaresh · 12 September 2026</div>
+</footer>
+
+<script>
+// Countdown
+const target = new Date('2026-09-12T14:00:00');
+function tick(){
+  const diff = target - Date.now();
+  if(diff<0)return;
+  document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+  document.getElementById('cd-h').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+}
+tick(); setInterval(tick,60000);
+
+// Language toggle
+let lang='en';
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===l));
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+l);
+    if(val) el.innerHTML=val;
+  });
+}
+
+// Mute toggle (audio element placeholder)
+let muted=true;
+document.getElementById('muteBtn').addEventListener('click',()=>{
+  muted=!muted;
+  document.getElementById('muteIcon').innerHTML=muted
+    ?'<path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>'
+    :'<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke-linecap="round"/>';
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
